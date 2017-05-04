@@ -12,33 +12,19 @@ namespace WindowsFormsApp1
 {
     public partial class FormMainMenu : Form
     {
-        List<Car> Cars = new List<Car>();
-        List<Computer> Computers = new List<Computer>();
-        List<Plane> Planes = new List<Plane>();
-        List<Submarine> Submarines = new List<Submarine>();
+        List<Object> Toys = new List<Object>();
 
         public FormMainMenu()
         {
             InitializeComponent();
-            
+
             this.comboBox1.Items.AddRange(new object[] {
-                        "Car",
-                        "Computer",
-                        "Plane",
-                        "Submarine"});
-
-            this.comboBox2.Items.AddRange(new object[] {
-                        "Car",
-                        "Computer",
-                        "Plane",
-                        "Submarine"});
-
-            this.comboBox3.Items.AddRange(new object[] {
-                        "Car",
-                        "Computer",
-                        "Plane",
-                        "Submarine"});
-
+                    "Computer",
+                    "Car",
+                    "Plane",
+                    "Submarine"
+            });
+                  
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -55,7 +41,7 @@ namespace WindowsFormsApp1
                         Computer computer = new Computer();
                         computer.SetName(textBox1.Text);
                         computer.SetPrice(Convert.ToDouble(textBox2.Text));
-                    Computers.Add(computer);
+                    Toys.Add(computer);
                     break;
 
                 case "Car":
@@ -63,7 +49,7 @@ namespace WindowsFormsApp1
                         car.SetName(textBox1.Text);
                         car.SetPrice(Convert.ToDouble(textBox2.Text));
                         car.SetAcceleration(Convert.ToDouble(textBox3.Text));
-                    Cars.Add(car);
+                    Toys.Add(car);
                     break;
 
                 case "Plane":
@@ -72,7 +58,7 @@ namespace WindowsFormsApp1
                         plane.SetPrice(Convert.ToDouble(textBox2.Text));
                         plane.SetAcceleration(Convert.ToDouble(textBox3.Text));
                         plane.SetRise(Convert.ToDouble(textBox5.Text));
-                    Planes.Add(plane);
+                    Toys.Add(plane);
 
                     break;
 
@@ -82,7 +68,7 @@ namespace WindowsFormsApp1
                         submarine.SetPrice(Convert.ToDouble(textBox2.Text));
                         submarine.SetAcceleration(Convert.ToDouble(textBox3.Text));
                         submarine.SetDive(Convert.ToDouble(textBox4.Text));
-                    Submarines.Add(submarine);
+                    Toys.Add(submarine);
                     break; 
             }
             textBox1.ResetText();
@@ -90,21 +76,6 @@ namespace WindowsFormsApp1
             textBox3.ResetText();
             textBox4.ResetText();
             textBox5.ResetText();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -137,220 +108,92 @@ namespace WindowsFormsApp1
             }
            
         }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-          
-        }
-
         private void button2_Click_1(object sender, EventArgs e)
         {
             richTextBox1.Clear();
             if (comboBox4.Text != null)
             {
-                switch (comboBox3.Text)
+                if (comboBox4.SelectedItem is IDive)
                 {
-                    case "Computer":
-                        for (int i = 0; i < Computers.Count; i++)
-                        {
-                            if (Computers[i].GetName().Equals(comboBox4.Text))
-                            {
-                                richTextBox1.Text += "Name: " + (Computers[i].GetName());
-                                richTextBox1.Text += "\nPrice: " + (Computers[i].GetPrice());
-                            }
-                        }
-                        break;
+                    var submarine = (Submarine)comboBox4.SelectedItem;
+                    richTextBox1.Text += "Name: " + (submarine.GetName());
+                    richTextBox1.Text += "\nPrice: " + (submarine.GetPrice());
+                    richTextBox1.Text += "\nAcceleration: " + (submarine.GetAcceleration());
+                    richTextBox1.Text += "\nDive: " + (submarine.GetDive());
+                   
+                }
+                else if (comboBox4.SelectedItem is IRise)
+                {
+                    var plane = (Plane)comboBox4.SelectedItem;
+                    richTextBox1.Text += "Name: " + (plane.GetName());
+                    richTextBox1.Text += "\nPrice: " + (plane.GetPrice());
+                    richTextBox1.Text += "\nAcceleration: " + (plane.GetAcceleration());
+                    richTextBox1.Text += "\nRise: " + (plane.GetRise());
 
-                    case "Car":
-                        for (int i = 0; i < Cars.Count; i++)
-                        {
-                            if (Cars[i].GetName().Equals(comboBox4.Text))
-                            {
-                                richTextBox1.Text += "Name: " + (Cars[i].GetName());
-                                richTextBox1.Text += "\nPrice: " + (Cars[i].GetPrice());
-                                richTextBox1.Text += "\nAcceleration: " + (Cars[i].GetAcceleration());
-                            }
-                        }
-                        break;
-
-                    case "Plane":
-                        for (int i = 0; i < Planes.Count; i++)
-                        {
-                            if (Planes[i].GetName().Equals(comboBox4.Text))
-                            {
-                                richTextBox1.Text += "Name: " + (Planes[i].GetName());
-                                richTextBox1.Text += "\nPrice: " + (Planes[i].GetPrice());
-                                richTextBox1.Text += "\nAcceleration: " + (Planes[i].GetAcceleration());
-                                richTextBox1.Text += "\nRise: " + (Planes[i].GetRise());
-                            }
-                        }
-                        break;
-
-                    case "Submarine":
-                        for (int i = 0; i < Submarines.Count; i++)
-                        {
-                            if (Submarines[i].GetName().Equals(comboBox4.Text))
-                            {
-                                richTextBox1.Text += "Name: " + (Submarines[i].GetName());
-                                richTextBox1.Text += "\nPrice: " + (Submarines[i].GetPrice());
-                                richTextBox1.Text += "\nAcceleration: " + (Submarines[i].GetAcceleration());
-                                richTextBox1.Text += "\nDive: " + (Submarines[i].GetDive());
-                            }
-                        }
-                        break;
-
-                    default:
-                        break;
+                }
+                else if (comboBox4.SelectedItem is IAccelerate)
+                {
+                    var car = (Car)comboBox4.SelectedItem;
+                    richTextBox1.Text += "Name: " + (car.GetName());
+                    richTextBox1.Text += "\nPrice: " + (car.GetPrice());
+                    richTextBox1.Text += "\nAcceleration: " + (car.GetAcceleration());
+                }
+                else
+                {
+                    var computer = (Computer)comboBox4.SelectedItem;
+                    richTextBox1.Text += "Name: " + (computer.GetName());
+                    richTextBox1.Text += "\nPrice: " + (computer.GetPrice());
                 }
             }
             
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (comboBox2.Text)
-            {
-                case "Computer":
-                    textBox6.Enabled = false;
-                    textBox7.Enabled = false;
-                    textBox8.Enabled = false;
-                    break;
-
-                case "Car":
-                    textBox6.Enabled = true;
-                    textBox7.Enabled = false;
-                    textBox8.Enabled = false;
-                    break;
-
-                case "Plane":
-                    textBox6.Enabled = true;
-                    textBox7.Enabled = false;
-                    textBox8.Enabled = true;
-                    break;
-
-                case "Submarine":
-                    textBox6.Enabled = true;
-                    textBox7.Enabled = true;
-                    textBox8.Enabled = false;
-                    break;
-            }
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox9_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (comboBox2.Text)
+            string toysName;
+            toysName = comboBox5.SelectedItem.ToString();
+            //TODO dokończyć wyszukiwanie zabawek po nazwie
+            if (comboBox5.SelectedItem is IRise)
             {
-                case "Computer":
-                    for (int i = 0; i < Computers.Count; i++)
-                    {
-                        if (Computers[i].GetName().Equals(comboBox5.Text))
-                        {
-                            this.textBox9.Text = Computers[i].GetPrice().ToString();
-                            break;
-                        }
-                    }
+                textBox6.Enabled = true;
+                textBox7.Enabled = false;
+                textBox8.Enabled = true;
 
-                    break;
-
-                case "Car":
-                    for (int i = 0; i < Cars.Count; i++)
-                    {
-                        if (Cars[i].GetName().Equals(comboBox5.Text))
-                        {
-                            this.textBox9.Text = Cars[i].GetPrice().ToString();
-                            this.textBox6.Text = Cars[i].GetAcceleration().ToString();
-                            break;
-                        }
-                    }
-                    break;
-
-                case "Plane":
-                    for (int i = 0; i < Planes.Count; i++)
-                    {
-                        if (Planes[i].GetName().Equals(comboBox5.Text))
-                        {
-                            this.textBox9.Text = Planes[i].GetPrice().ToString();
-                            this.textBox6.Text = Planes[i].GetAcceleration().ToString();
-                            this.textBox8.Text = Planes[i].GetRise().ToString();
-                            break;
-                        }
-                    }
-
-                    break;
-
-                case "Submarine":
-                    for (int i = 0; i < Submarines.Count; i++)
-                    {
-                        if (Submarines[i].GetName().Equals(comboBox5.Text))
-                        {
-                            this.textBox9.Text = Submarines[i].GetPrice().ToString();
-                            this.textBox6.Text = Submarines[i].GetAcceleration().ToString();
-                            this.textBox7.Text = Submarines[i].GetDive().ToString();
-                            break;
-                        }
-                    }
-                    break;
+                var plane = (Plane)comboBox5.SelectedItem;
+                textBox9.Text = plane.GetPrice().ToString();
+                textBox6.Text = plane.GetAcceleration().ToString();
+                textBox8.Text = plane.GetRise().ToString();
             }
-        }
+            else if (comboBox5.SelectedItem is IDive)
+            {
+                textBox6.Enabled = true;
+                textBox7.Enabled = true;
+                textBox8.Enabled = false;
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
+                var submarine = (Submarine)comboBox5.SelectedItem;
+                textBox9.Text = submarine.GetPrice().ToString();
+                textBox6.Text = submarine.GetAcceleration().ToString();
+                textBox7.Text = submarine.GetDive().ToString();
+            }
+            else if (comboBox5.SelectedItem is IAccelerate)
+            {
+                textBox6.Enabled = true;
+                textBox7.Enabled = false;
+                textBox8.Enabled = false;
 
-        }
+                var car = (Car)comboBox5.SelectedItem;
+                textBox9.Text = car.GetPrice().ToString();
+                textBox6.Text = car.GetAcceleration().ToString();
+            }
+            else
+            {
+                textBox6.Enabled = false;
+                textBox7.Enabled = false;
+                textBox8.Enabled = false;
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+                var computer = (Computer)comboBox5.SelectedItem;
+                textBox9.Text = computer.GetPrice().ToString();
+            }
         }
 
         private void comboBox5_Click(object sender, EventArgs e)
@@ -362,198 +205,88 @@ namespace WindowsFormsApp1
             textBox8.ResetText();
             textBox9.ResetText();
 
-            switch (comboBox2.Text)
+            for(int i = 0; i < Toys.Count; i++)
             {
-                case "Computer":
+                string toysName;
+                if (Toys[i] is IDive)
+                {
+                    var submarine = (Submarine)Toys[i];
+                    toysName = submarine.GetName();
 
-                    for (int i = 0; i < Computers.Count; i++)
-                    {
-                        this.comboBox5.Items.Add(Computers[i].GetName());
-                    }
-                    break;
+                }
+                else if (Toys[i] is IRise)
+                {
+                    var plane = (Plane)Toys[i];
+                    toysName = plane.GetName();
 
-                case "Car":
-                    for (int i = 0; i < Cars.Count; i++)
-                    {
-                        this.comboBox5.Items.Add(Cars[i].GetName());
-                    }
-
-                    break;
-
-                case "Plane":
-                    for (int i = 0; i < Planes.Count; i++)
-                    {
-                        this.comboBox5.Items.Add(Planes[i].GetName());
-                    }
-
-                    break;
-
-                case "Submarine":
-                    for (int i = 0; i < Submarines.Count; i++)
-                    {
-                        this.comboBox5.Items.Add(Submarines[i].GetName());
-                    }
-
-                    break;
+                }
+                else if (Toys[i] is IAccelerate)
+                {
+                    var car = (Car)Toys[i];
+                    toysName = car.GetName();
+                }
+                else
+                {
+                    var computer = (Computer)Toys[i];
+                    toysName = computer.GetName();
+                }
+                this.comboBox5.Items.Add(toysName);
             }
-        }
 
-        private void comboBox1_Click(object sender, EventArgs e)
-        {
             
-        }
-
-        private void comboBox3_Click(object sender, EventArgs e)
-        {
-            comboBox4.Items.Clear();
-            comboBox4.ResetText();
-            richTextBox1.ResetText();
-
-            switch (comboBox3.Text)
-            {
-                case "Computer":
-
-                    for (int i = 0; i < Computers.Count; i++)
-                    {
-                        this.comboBox5.Items.Add(Computers[i].GetName());
-                    }
-                    break;
-
-                case "Car":
-                    for (int i = 0; i < Cars.Count; i++)
-                    {
-                        this.comboBox5.Items.Add(Cars[i].GetName());
-                    }
-
-                    break;
-
-                case "Plane":
-                    for (int i = 0; i < Planes.Count; i++)
-                    {
-                        this.comboBox5.Items.Add(Planes[i].GetName());
-                    }
-
-                    break;
-
-                case "Submarine":
-                    for (int i = 0; i < Submarines.Count; i++)
-                    {
-                        this.comboBox5.Items.Add(Submarines[i].GetName());
-                    }
-
-                    break;
-            }
-        }
+        } 
 
         private void comboBox4_Click(object sender, EventArgs e)
         {
             comboBox4.Items.Clear();
-            comboBox4.ResetText();
-
-            switch (comboBox3.Text)
+            richTextBox1.Clear();
+            for(int i = 0; i < Toys.Count; i++)
             {
-                case "Computer":
-
-                    for (int i = 0; i < Computers.Count; i++)
-                    {
-                        this.comboBox4.Items.Add(Computers[i].GetName());
-                    }
-                    break;
-
-                case "Car":
-                    for (int i = 0; i < Cars.Count; i++)
-                    {
-                        this.comboBox4.Items.Add(Cars[i].GetName());
-                    }
-
-                    break;
-
-                case "Plane":
-                    for (int i = 0; i < Planes.Count; i++)
-                    {
-                        this.comboBox4.Items.Add(Planes[i].GetName());
-                    }
-
-                    break;
-
-                case "Submarine":
-                    for (int i = 0; i < Submarines.Count; i++)
-                    {
-                        this.comboBox4.Items.Add(Submarines[i].GetName());
-                    }
-
-                    break;
+                comboBox4.Items.AddRange(new object[]
+                {
+                    Toys[i]});
             }
+
+            
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            switch (comboBox2.Text)
+            if (comboBox5.SelectedItem is IRise)
             {
-                case "Computer":
-                    for(int i = 0; i < Computers.Count; i++)
-                    {
-                        if (Computers[i].GetName().Equals(comboBox5.Text))
-                        {
-                            Computers[i].SetPrice(Convert.ToDouble(textBox9.Text));
-                            break;
-                        }
-                    }
-                    
-                    break;
-
-                case "Car":
-                    for (int i = 0; i < Cars.Count; i++)
-                    {
-                        if (Cars[i].GetName().Equals(comboBox5.Text))
-                        {
-                            Cars[i].SetPrice(Convert.ToDouble(textBox9.Text));
-                            Cars[i].SetAcceleration(Convert.ToDouble(textBox6.Text));
-                            break;
-                        }
-                    }
-                    break;
-
-                case "Plane":
-                    for (int i = 0; i < Planes.Count; i++)
-                    {
-                        if (Planes[i].GetName().Equals(comboBox5.Text))
-                        {
-                            Planes[i].SetPrice(Convert.ToDouble(textBox9.Text));
-                            Planes[i].SetAcceleration(Convert.ToDouble(textBox6.Text));
-                            Planes[i].SetRise(Convert.ToDouble(textBox8.Text));
-                            break;
-                        }
-                    }
-
-                    break;
-
-                case "Submarine":
-                    for (int i = 0; i < Submarines.Count; i++)
-                    {
-                        if (Submarines[i].GetName().Equals(comboBox5.Text))
-                        {
-                            Submarines[i].SetPrice(Convert.ToDouble(textBox9.Text));
-                            Submarines[i].SetAcceleration(Convert.ToDouble(textBox6.Text));
-                            Submarines[i].SetDive(Convert.ToDouble(textBox7.Text));
-                            break;
-                        }
-                    }
-                    break;
+                var plane = (Plane)comboBox5.SelectedItem;
+                plane.SetPrice(Convert.ToDouble(textBox9.Text));
+                plane.SetAcceleration(Convert.ToDouble(textBox6.Text));
+                plane.SetRise(Convert.ToDouble(textBox8.Text));
             }
+            else if (comboBox5.SelectedItem is IDive)
+            {
+                var submarine = (Submarine)comboBox5.SelectedItem;
+                submarine.SetPrice(Convert.ToDouble(textBox9.Text));
+                submarine.SetAcceleration(Convert.ToDouble(textBox6.Text));
+                submarine.SetDive(Convert.ToDouble(textBox7.Text));
+            }
+            else if (comboBox5.SelectedItem is IAccelerate)
+            {
+                var car = (Car)comboBox5.SelectedItem;
+                car.SetPrice(Convert.ToDouble(textBox9.Text));
+                car.SetAcceleration(Convert.ToDouble(textBox6.Text));
+            }
+            else
+            {
+                var computer = (Computer)comboBox5.SelectedItem;
+                computer.SetPrice(Convert.ToDouble(textBox9.Text));
+            }
+
             textBox6.ResetText();
             textBox7.ResetText();
             textBox8.ResetText();
             textBox9.ResetText();
             textBox5.ResetText();
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
 
         }
 
-        private void label18_Click(object sender, EventArgs e)
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

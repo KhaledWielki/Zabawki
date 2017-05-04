@@ -7,3 +7,12 @@ c:\users\adam\documents\visual studio 2017\Projects\WindowsFormsApp1\WindowsForm
 c:\users\adam\documents\visual studio 2017\Projects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 c:\users\adam\documents\visual studio 2017\Projects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 c:\users\adam\documents\visual studio 2017\Projects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormMainMenu.resources
+C:\Users\Adam\Desktop\zabawki\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Adam\Desktop\zabawki\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Adam\Desktop\zabawki\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Adam\Desktop\zabawki\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Zabawki.csprojResolveAssemblyReference.cache
+C:\Users\Adam\Desktop\zabawki\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormMainMenu.resources
+C:\Users\Adam\Desktop\zabawki\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Adam\Desktop\zabawki\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Zabawki.csproj.GenerateResource.Cache
+C:\Users\Adam\Desktop\zabawki\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Adam\Desktop\zabawki\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
